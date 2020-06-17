@@ -17,4 +17,13 @@ router.get('/test', function(req, res, next) {
     
 });
 
+router.post('/login',function(req,res,next){
+    let param=req.body;
+    pool.getConnection(function(err, connection) {
+        connection.query(userSQL.login, [param.name,param.pass], function(err, rex) {
+            method.responseJSON(res,{code:200,data:rex})
+        })
+    })
+})
+
 module.exports = router;
