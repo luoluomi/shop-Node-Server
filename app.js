@@ -10,8 +10,9 @@ var bodyParser = require('body-parser');
 // var backusers = require('./routes/backusers');
 // var webhead = require('./routes/webhead');
 // var backslogin = require('./routes/backslogin')
-// var upload=require('./routes/upload')
+var upload=require('./routes/upload')
 var login=require('./routes/login')
+var stock=require('./routes/stock')
 var ejs = require('ejs');
 var app = express();
 app.use(bodyParser())
@@ -46,8 +47,9 @@ app.use(allowCrossDomain);
 // app.use('/backusers', backusers);
 // app.use('/webhead', webhead);
 // app.use('/backslogin', backslogin)
-// app.use('/demo',upload)
+app.use('/api',upload)
 app.use('/api',login)
+app.use('/stock',stock)
     // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
